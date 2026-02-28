@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form Sederhana</title>
+    <link rel="icon" type="img/png" href="gambar/icon.png" sizes="16x16" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+    <form action="coba_input.html" target="_blank" method="post>
+        <label for="depan">Nama depan:</label><br>
+        <input type="text" id="depan" name="i_name" value="Budi"><br>
+        <label for="n_belakang">Nama Belakang:</label><br>
+        <input type="text" id="n_belakang" name="i_belakan" value="Prawira"><br><br>
+        <input type="submit" value="Kirim"">
+        <input type="reset" value="Reset">
+    </form>
+
+    <p>Jika Anda mengklik tombol "Kirim", data formulir akan dikirim ke halaman bernama "coba_input.html".</p>
+    <br>
+    <br>
+    <p>Dari kode diatas akan menampilkan sebuah formulir yang dapat dilakukan interaksi. 
+        pada formulir tersebut terdapat dua tipe input text yang digunakan untuk mengisikan 
+        nama, lalu dua tipe button yang memiliki fungsi berbeda. untuk yang tipe submit akan 
+        membuat berpindah halaman (sesuai dengan yang dituliskan di action), dan yang tipe reset 
+        akan menghapus isi dari formulir. selanjutnya penambahan target, pada _self ini menjadi 
+        tipe default yang digunakan. hal ini membuat web akan dipindahkan di halaman yang dituju 
+        dengan cara menggantikan halaman web yang sedang dibuka sekarang. berbeda dengan target 
+        _blank, targer ini memaksa untuk browser membuka tab baru untuk menanpilkan halaman yang 
+        dituju. selanjutnya ada method, sama seperti target tadi method juga mempunyai default 
+        yaitu get. method ini berfungsi jika pengguna menekan tombol kirim, maka input akan ditempelkan 
+        secara langsung di dalam alamat URL browser. namun untuk method post, pengiriman akan 
+        dilakukan secara tersembunyi yaitu lewat belakang layar melalui permintaan. sehingga data 
+        tersebut tidak akan muncul di URL browser.
+    </p>
+
+</body>
+</html>
