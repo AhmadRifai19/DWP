@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form Pendaftaran Mahasiswa Baru</title>
+    <link rel="icon" type="img/png" href="gambar/icon.png" sizes="16x16" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+    <div id="header">
+
+    </div>
+
+    <div id="main">
+        <div id="link">
+            
+        </div>
+
+        <div id="content">
+            <fieldset>
+                <legend>Form Pendaftaran Mahasiswa Baru</legend>
+                <form action="proses.php" method="POST">
+                    <table border="0" cellpadding="5">
+                        <tr>
+                            <td><label for="nama">Nama Lengkap</label></td>
+                            <td>:</td>
+                            <td><input type="text" id="nama" name="nama_lengkap" size="30"></td>
+                        </tr>
+                        <tr>
+                            <td><label>Tempat/Tanggal Lahir</label></td>
+                            <td>:</td>
+                            <td>
+                                <input type="text" name="tempat_lahir" size="15"> / 
+                                <select name="tgl">
+                                    <option value="">-DD-</option>
+                                    <option value="1">1</option><option value="2">2</option><option value="3">3</option>
+                                    <option value="4">4</option><option value="5">5</option><option value="6">6</option>
+                                    <option value="7">7</option><option value="8">8</option><option value="9">9</option>
+                                    <option value="10">10</option><option value="11">11</option><option value="12">12</option>
+                                    <option value="13">13</option><option value="14">14</option><option value="15">15</option>
+                                    <option value="16">16</option><option value="17">17</option><option value="18">18</option>
+                                    <option value="19">19</option><option value="20">20</option><option value="21">21</option>
+                                    <option value="22">22</option><option value="23">23</option><option value="24">24</option>
+                                    <option value="25">25</option><option value="26">26</option><option value="27">27</option>
+                                    <option value="28">28</option><option value="29">29</option><option value="30">30</option>
+                                    <option value="31">31</option>
+                                </select> -
+                                <select name="bln">
+                                    <option value="">-MM-</option>
+                                    <option value="1">1</option><option value="2">2</option><option value="3">3</option>
+                                    <option value="4">4</option><option value="5">5</option><option value="6">6</option>
+                                    <option value="7">7</option><option value="8">8</option><option value="9">9</option>
+                                    <option value="10">10</option><option value="11">11</option><option value="12">12</option>
+                                </select> -
+                                <select name="thn">
+                                    <option value="">-YYYY-</option>
+                                    <option value="1989">1989</option><option value="1990">1990</option><option value="1991">1991</option>
+                                    <option value="1992">1992</option><option value="1993">1993</option><option value="1994">1994</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="agama">Agama</label></td>
+                            <td>:</td>
+                            <td>
+                                <select id="agama" name="agama">
+                                    <option value="">-PILIH-</option>
+                                    <option value="Islam">Islam</option>
+                                    <option value="Kristen">Kristen</option>
+                                    <option value="Katolik">Katolik</option>
+                                    <option value="Hindu">Hindu</option>
+                                    <option value="Budha">Budha</option>
+                                    <option value="Konghucu">Konghucu</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label>Jenis Kelamin</label></td>
+                            <td>:</td>
+                            <td>
+                                <input type="radio" id="jk_l" name="jenis_kelamin" value="Laki-laki"> <label for="jk_l">Laki-laki</label>
+                                <input type="radio" id="jk_p" name="jenis_kelamin" value="Perempuan"> <label for="jk_p">Perempuan</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="ijazah">No. Ijazah SMA/MA</label></td>
+                            <td>:</td>
+                            <td><input type="text" id="ijazah" name="no_ijazah" size="20"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="foto">Foto (Ukuran File Maks. 20 KB)</label></td>
+                            <td>:</td>
+                            <td><input type="file" id="foto" name="foto_profil"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="ayah">Nama Ayah</label></td>
+                            <td>:</td>
+                            <td><input type="text" id="ayah" name="nama_ayah" size="30"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="ibu">Nama Ibu</label></td>
+                            <td>:</td>
+                            <td><input type="text" id="ibu" name="nama_ibu" size="30"></td>
+                        </tr>
+                        <tr>
+                            <td valign="top"><label for="alamat">Alamat Rumah</label></td>
+                            <td valign="top">:</td>
+                            <td><textarea id="alamat" name="alamat_rumah" rows="4" cols="40"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td><label for="telp">No. Telp</label></td>
+                            <td>:</td>
+                            <td><input type="text" id="telp" name="no_telp" size="15"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="sekolah">Nama Sekolah Asal</label></td>
+                            <td>:</td>
+                            <td><input type="text" id="sekolah" name="sekolah_asal" size="30"></td>
+                        </tr>
+                        <tr>
+                            <td valign="top"><label for="alamat_sekolah">Alamat Sekolah Asal</label></td>
+                            <td valign="top">:</td>
+                            <td><textarea id="alamat_sekolah" name="alamat_sekolah" rows="4" cols="40"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td><label for="jurusan">Jurusan Dipilih</label></td>
+                            <td>:</td>
+                            <td>
+                                <select id="jurusan" name="jurusan">
+                                    <option value="">-PILIH-</option>
+                                    <option value="Komputerisasi Akuntansi">Komputerisasi Akuntansi</option>
+                                    <option value="Administrasi Bisnis">Administrasi Bisnis</option>
+                                    <option value="Teknik Komputer Kontrol">Teknik Komputer Kontrol</option>
+                                    <option value="Teknik Listrik">Teknik Listrik</option>
+                                    <option value="Mesin Otomotif">Mesin Otomotif</option>
+                                    <option value="Perkeretaapian">Perkeretaapian</option>
+                                    <option value="Teknologi Informasi">Teknologi Informasi</option>
+                                    <option value="Akuntansi">Akuntansi</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label>Tahu informasi ini dari</label></td>
+                            <td>:</td>
+                            <td>
+                                <input type="checkbox" id="info_koran" name="info[]" value="Koran"> <label for="info_koran">Koran</label>
+                                <input type="checkbox" id="info_web" name="info[]" value="Website"> <label for="info_web">Website</label>
+                                <input type="checkbox" id="info_tv" name="info[]" value="Televisi"> <label for="info_tv">Televisi</label>
+                                <input type="checkbox" id="info_radio" name="info[]" value="Radio"> <label for="info_radio">Radio</label>
+                                <input type="checkbox" id="info_teman" name="info[]" value="Teman"> <label for="info_teman">Teman</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <input type="submit" value="DAFTAR">
+                                <input type="reset" value="BATAL">
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </fieldset>
+        </div>
+    </div>
+
+    <div id="footer">
+        <i>copyright@Ahmad_Rifai_253307049_2026</i>
+    </div>
+
+</body>
+</html>
