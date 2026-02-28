@@ -128,7 +128,51 @@
     <input type="number" id="quantity" name="quantity" min="-50" max="10"><br>
     <label for="vol">Volume (between 0 and 50):</label>
     <input type="range" id="vol" name="vol" min="-50" max="50"><br>
-    <p></p>
+    <p>Dari kode diatas akan memunculkan dua buah input yang berbeda. yang pertama tipe 
+        input angka dengan fitur Spinner. pada Spinner tersebut dapat diatur sesuai 
+        keinginan. dikarenakan pada petutunjuk terdapat nilai minimum yang harus dibuat 
+        ke -50, maka pada bagian Spinner dapat diubah nilai minimumnya sampai ke -50. 
+        sedangkan nilai maksimalnya di angka 10. Selanjutnya ada tipe range, untuk tipe 
+        range sendiri seperti sebuah tombol volume yang dapat digeser ke kanan dan ke kiri. 
+        untuk nilainya tidak terlihat ditampilan, namun jika saya mengubah nilai minimumnya 
+        ke -50 juga, maka radius yang saya dapat geser akan lebih jauh.
+    </p>
+
+    <br>
+    <hr>
+
+    <h3>Uji coba 8</h3>
+    <label for="homepage">Add your homepage:</label>
+    <input type="url" id="homepage" name="homepage"><br>
+    <label for="gsearch">Search Google:</label>
+    <input type="search" id="gsearch" name="gsearch"><br>
+    <label for="ph">Enter your phone number:</label>
+    <input type="tel" id="ph" name="phone" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"><br>
+    <p>kode diatas akan membbuat website menampilkan 3 buah tipe input yang berbeda. 
+        untuk yang pertama akan memunculkan tipe input untuk memasukkan link url. 
+        ketika akan melakukan kirim ke serve dengan tipe input seperti ini dapat memvalidasi 
+        apakah text yang dikirimkan berupa url atau tidak. selanjutnya ada tipe input pencarian, 
+        tipe ini dapat digunakan untuk kolom pencarian pada sebuah website. untuk menandai ciri 
+        khas tipe ini dapat dilihat pada saat memasukkan text, pada tipe input ini ada tombol 
+        silang yang dapat langsung menghapus seluruh text yang ditulis. yang terakhir ada tipe 
+        input yang digunakan untuk memasukkkan nomor telepon. sama halnya dengan tipe input yang 
+        pertama, tipe input ini dapat melakukan validasi sebelum data dikirimkan ke server.
+    </p>
+
+    <br>
+    <hr>
+
+    <h3>Uji coba 9</h3>
+    <label for="appt">Select a time:</label>
+    <input type="time" id="appt" name="appt"><br>
+    <label for="week">Select a week:</label>
+    <input type="week" id="week" name="week"><br>
+    <p>oke tipe ini hampir mirip dengan uji coba lima tadi, namun pada tipe ini pengguna 
+        diharuskan mengatur sendiri dan bebas untuk kapan waktu yang akan ditentukan. 
+        untuk tipe input pertama, pengguna dapat melakukan input waktu yang isinya jam dan 
+        menit serta keterangan waktunya. selanjutnya tipe input yang kedua berisikan input 
+        waktu yang isinya tanggal, minggu, dan tahun.
+    </p>
 
 </body>
 </html>
