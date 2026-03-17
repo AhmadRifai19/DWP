@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Combinator</title>
+
+    <style>
+        div p { /* No 1: Descendant Selector (Semua p di dalam div) */
+            color: red;
+        }
+        div > p { /* Child Selector (p yang merupakan anak langsung dari div) */
+            background-color: yellow;
+        }
+        div + p { /* Adjacent Sibling Selector (p yang tepat setelah div) */
+            background-color: darkgray;
+        }
+        div ~ p { /* No 4: General Sibling Selector (Semua p yang merupakan saudara div) */
+            color: cyan;
+        }
+    </style>
+
+</head>
+<body>
+    <div>
+        <p>paragraft ini termasuk di dalam sebuah div yang sudah di atur css nya. hasilnya untuk warna font akan menjadi merah dengan menggunakan background kuning </p>
+        <p>dikarenakan paragraft ini juga masih di dalam sebuah div maka hasil outputnya sama persis dengan paragarft pertama</p>
+    </div>
+
+        <p>dikarenakan paragraft ini berada tepat setelah sebuah div jadi paragraft ini masih termasuk anak dari div, disisi lain paragraft ini juga menjadi saudara 
+            dari div yang membuat masih mendapatkan aturan div ~ p. maka paragraft ini hanya akan berubah bagian bacgroundnya dengan warna abu-abu gelap dan font 
+            akan berubah menjadi warna cyan.
+        </p>
+        <p>paragraft ini masih termasuk keluarga dari div, maka warna font akan berubah menjadi warna cyan</p>
+</body>
+</html>

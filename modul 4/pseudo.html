@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pseudo</title>
+
+    <style>
+        p {
+            display: none;
+            background-color: darkgray;
+            padding: 20px;
+        }
+
+        div:hover p { /* :hover adalah CSS Pseudo Class */
+            display: block;
+        }
+
+        div a {
+            color: black;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        div a:hover {
+            color: red;
+        }
+    </style>
+
+</head>
+<body>
+    <div> Letakkan kursor disini untuk melihat div element
+        <p>Saya adalah element</p>
+    </div>
+    <div>arahkan kursor ke button untuk melihat hasil element
+        <a href="#">arahkan ke sini</a>
+    </div>
+</body>
+</html>
