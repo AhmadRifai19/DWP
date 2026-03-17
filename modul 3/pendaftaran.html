@@ -1,0 +1,219 @@
+
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <title>Halaman Beranda</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Ubah sesuai data Anda -->
+    <meta name="author" content="Angger Binuko">
+    <meta name="nim" content="123456789">
+
+    <!-- Melengkapi Meta (Blok Bagian Hijau) -->
+    <meta name="description" content="Website praktikum HTML5 Lanjut">
+    <meta name="keywords" content="HTML5, Form, Audio, Video, SVG, Canvas">
+
+    <!-- Melengkapi Style (Blok Bagian Hijau) -->
+    <style>
+    * {
+        box-sizing: border-box;
+        }
+        body {
+        font-family: Arial, Helvetica, sans-serif;
+        }
+        header {
+        background-color: #666;
+        padding: 30px;
+        text-align: center;
+        font-size: 35px;
+        color: white;
+        }
+        section {
+        display: flex;
+        }
+        nav {
+        display: flex;
+        width: 30%;
+        background: #ccc;
+        padding: 20px;
+        justify-content: center;
+        }
+        nav ul {
+        list-style-type: none;
+        padding: 0;
+        display: inline;
+        justify-content: center;
+        align-items: center;
+        width: 60%;
+        }
+        article {
+        padding: 20px;
+        width: 70%;
+        background-color: #f1f1f1;
+        }
+        label {
+        display: inline-block;
+        width: 200px;
+        margin-bottom: 10px;
+        }
+        fieldset {
+        margin-bottom: 15px;
+        width: 1015px;
+        }
+        button {
+        background-color: #7d897e;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+        }
+        button:hover {
+        background-color: #617e62;
+        }
+        footer {
+        background-color: #777;
+        padding: 10px;
+        text-align: center;
+        color: white;
+        }
+        nav ul li{
+            background: #fef9f9;
+            border: 1px solid black;
+            border-radius: 15px;
+            width: 100%;
+            height: 40px;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        nav ul li:hover {
+            background-color: #555;
+            color: white;
+        }
+
+        nav ul li:hover a {
+            color: white;
+        }
+
+        nav ul li.active:hover {
+            background-color: #555;
+            color: white;
+        }
+
+        nav ul li.active:hover a {
+            color: white;
+        }
+
+        nav ul li a{
+            text-decoration: none;
+            color: black;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-size: 15px;
+            font-weight: bold;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center
+        }
+
+        nav ul li.active {
+            background-color: cadetblue;
+        }
+
+        nav ul li.active a {
+            color: white;
+        }
+        @media (max-width: 600px) {
+        nav, article {
+            width: 100%;
+            height: auto;
+        }
+        }
+  </style>
+</head>
+
+<body>
+
+    <header>
+        <h2>Judul Website</h2>
+    </header>
+
+    <section>
+
+        <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="gambar.html">Gambar</a></li>
+            <li><a href="event.html">Event</a></li>
+            <li><a href="audio.html">Audio</a></li>
+            <li><a href="video.html">Video</a></li>
+            <li><a href="svg.html">SVG</a></li>
+            <li><a href="canvas.html">Canvas</a></li>
+            <li class="active"><a href="pendaftaran.html">Pendaftaran</a></li>
+        </ul>
+    </nav>
+
+        <article>
+            <h1>Form Penjadwalan Pertemuan</h1>
+
+            <form action="#" method="POST">
+    
+                <fieldset>
+                <legend>Informasi Pribadi</legend>
+                
+                <br>
+
+                <label for="nama">Nama: </label>
+                <input type="text" id="nama" name="nama"><br><br>
+
+                <label for="telepon">No. Telepon: </label>
+                <input type="tel" id="telepon" name="telepon"><br><br>
+
+                <label for="email">Alamat Email: </label>
+                <input type="email" id="email" name="email"><br><br>
+
+                <label for="tgl_lahir">Tanggal Lahir: </label>
+                <input type="date" id="tgl_lahir" name="tgl_lahir" min="1987-01-01" max="1993-01-01" required><br><br>
+                </fieldset>
+
+                <fieldset>
+                <legend>Permintaan Pertemuan</legend>
+                
+                <br>
+
+                <label for="tujuan">Tujuan Pertemuan: </label>
+                <input type="text" id="tujuan" name="tujuan"><br><br>
+
+                <label for="kepentingan">Tingkat Kepentingan (0-10): </label>
+                <input type="range" id="kepentingan" name="kepentingan" min="1" max="10"><br><br>
+
+                <label for="tgl_pertemuan">Tanggal Kunjungan: </label>
+                <input type="date" id="tgl_pertemuan" name="tgl_pertemuan"><br><br>
+
+                <label for="waktu">Waktu (17.00 - 21.00): </label>
+                <input type="time" id="waktu" name="waktu"><br><br>
+                </fieldset>
+
+                <br>
+
+                <button type="submit">Submit</button>
+
+            </form>
+
+        </article>
+
+    </section>
+
+    <footer>
+        <p>&copy; 2026 - Praktikum HTML5 | Ahmad Rifai</p>
+    </footer>
+
+</body>
+
+</html>
