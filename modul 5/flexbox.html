@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Belajar Flex Box</title>
+    <style>
+        .wadah_flex {
+            display: flex;
+            justify-content: center;
+            background-color: rgb(122, 113, 113);
+            gap: 15px;
+            padding: 10px;
+        }
+
+        .wadah_flex > div{
+            display: flex;
+            background-color: rgb(124, 124, 215);
+            color: white;
+            margin: 10px;
+            padding: 10px;
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="wadah_flex">
+        <div>1</div>
+        <div>2</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+        <div>7</div>
+        <div>8</div>
+        <div>9</div>
+        <div>10</div>
+        <div>11</div>
+        <div>12</div>
+    </div>
+
+    <br>
+    <p>
+        skenario 1: pada skenario 1 ini tampilan dari div dengan class wadah_flex dibuat fleksibel selanjutnya menggunkan warna background-color abu abu.
+    </p>
+    <br>
+    <p>
+        skenario 2: pada skenario 2 ini menujuk ke hal yang lebih spesifik yaitu ke bagian div yang berada di dalam div dengan class wadah_flex. dengan memberikan 
+        style pada div yang berada di dalam div dengan class wadah_flex secara tersendiri, maka fungsi dari pemberian div tersebut adalah mengatur hanya bagian div 
+        yang berada di dalam div dengan class wadah_flex saja. 
+    </p>
+    <br>
+    <p>
+        skenario 3: dalam penggunaan flex-direction pada skenario 3, dapat diketahui bahwa terdapat 2 tipe yang dapat digunakan. tipe tersebut adalah row dan column. 
+        row sendiri adalah tipe default yang akan secara otomatis digunakana saat menggunakan display flex, ciri tipe ini adalah membuat konten yang ada di dalam sebuah 
+        div akan berjejer ke samping secara rapi. selanjutnya ada tipe column, tipe ini memiliki ciri membuat konten menjadi berjejer kebawah membuat sebuah kolom. dari 
+        kedua tipe tersebut memiliki fitur untuk membalikan urutannya hanya dengan menambahkan kode -reverse.
+    </p>
+    <br>
+    <p>
+        skenario 4: selanjutnya penggunaan flex-wrap sendiri terdapat 2 tipe juga yaitu wrap dan nowrap. untuk nowrap merupakan tpe defauld dari sebuah website yang jika 
+        digunakan setiap object yang tidak dapat dimuat di dalam suatu konten, object tersebut akan terpotong dan terkesan mengghilang. jika mengunakan wrap, maka 
+        masalah tersebut dapat diatasi. hal ini dikarenakan kegunaan dari wrap adalah memindahkan object yang tidak muat tadi kebawah bagian object yang lain, sehingga 
+        konten akan menjadi lebih panjang namun rapi. untuk wrap sendiri juga mamiliki fitur reverse yang penggunaannya hanya dengan menembahkan kode -reverse pada kode 
+        wrap.
+    </p>
+    <br>
+    <p>
+        skenario 5: flex-flow sendiri adalah jalan pintas untuk menggunakan flex-direction dan flex-wrap secara bersamaan. maksudnya kode ini memudahkan pengguna untuk 
+        mengatur display flex namun hanya dalam satu kode saja. hal ini terjadi karena flex-flow dapat mengakses kedua kode tersebut secara bersama dan tidak merubah 
+        fungsunya. 
+    </p>
+    <br>
+    <p>
+        skenario 6: kegunaan dari justify-content sendiri adalah untuk mangatur seluruh isi konten menjadi sejajar sumbu utama.
+    </p>
+</body>
+</html>
