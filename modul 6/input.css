@@ -1,1 +1,7 @@
 @import "tailwindcss";
+
+@theme {
+  /* Ini akan memaksa Tailwind membuat class .font-roboto */
+  --font-roboto: "Roboto", sans-serif;
+  --font-inter: "Inter", sans-serif;
+}
