@@ -9,10 +9,10 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300&family=Roboto:ital,wdth,wght@0,75..100,700;1,75..100,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300&family=Montserrat:ital@0;1&family=Roboto+Condensed:ital,wght@0,800;1,800&family=Roboto:ital,wdth,wght@0,75..100,700;1,75..100,700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
+    <div class="container flex flex-col">
         <div class="header bg-[rgb(86,135,219)] p-4 text-white flex justify-between items-center">
             <div class="logo flex items-center gap-3">
                 <img class="rounded-4xl h-13 w-13" src="../assets/gambar/Vector car honda mobilio in 2022 _ Wallpaper ponsel.jpg" alt="">
@@ -20,19 +20,33 @@
             </div>
             <div class="topbar flex">
                 <ul class="flex space-x-6 justify-center items-center gap-2.5">
-                    <li><a href="#" class="font-inter hover:text-blue-200 hover:underline underline-offset-8 decoration-2 decoration-blue-200 transition-all">Home</a></li>
-                    <li><a href="#" class="font-inter hover:text-blue-200 hover:underline underline-offset-8 decoration-2 decoration-blue-200 transition-all">Cars</a></li>
-                    <li><a href="#" class="font-inter hover:text-blue-200 hover:underline underline-offset-8 decoration-2 decoration-blue-200 transition-all">Services</a></li>
-                    <li><a href="#" class="font-inter hover:text-blue-200 hover:underline underline-offset-8 decoration-2 decoration-blue-200 transition-all">Packages</a></li>
-                    <li><a href="#" class="font-inter hover:text-blue-200 hover:underline underline-offset-8 decoration-2 decoration-blue-200 transition-all">Testimonials</a></li>
-                    <li><a href="#" class="font-inter hover:text-blue-200 hover:underline underline-offset-8 decoration-2 decoration-blue-200 transition-all">FAQ</a></li>
-                    <li><a href="#" class="font-inter hover:text-blue-200 hover:underline underline-offset-8 decoration-2 decoration-blue-200 transition-all">Contact Us</a></li>
+                    <li><a href="#" class="font-inter hover:text-blue-200 hover:underline underline-offset-8 decoration-2 decoration-blue-200 hover:italic transition-all">Home</a></li>
+                    <li><a href="#" class="font-inter hover:text-blue-200 hover:underline underline-offset-8 decoration-2 decoration-blue-200 hover:italic transition-all">Cars</a></li>
+                    <li><a href="#" class="font-inter hover:text-blue-200 hover:underline underline-offset-8 decoration-2 decoration-blue-200 hover:italic transition-all">Services</a></li>
+                    <li><a href="#" class="font-inter hover:text-blue-200 hover:underline underline-offset-8 decoration-2 decoration-blue-200 hover:italic transition-all">Packages</a></li>
+                    <li><a href="#" class="font-inter hover:text-blue-200 hover:underline underline-offset-8 decoration-2 decoration-blue-200 hover:italic transition-all">Testimonials</a></li>
+                    <li><a href="#" class="font-inter hover:text-blue-200 hover:underline underline-offset-8 decoration-2 decoration-blue-200 hover:italic transition-all">FAQ</a></li>
+                    <li><a href="#" class="font-inter hover:text-blue-200 hover:underline underline-offset-8 decoration-2 decoration-blue-200 hover:italic transition-all">Contact Us</a></li>
                 </ul>
             </div>
-            <button class="font-roboto text-1xl text-[rgb(83,95,203)] border-2 border-solid border-white rounded-2xl px-8 py-2 bg-[rgb(171,177,236)] text-black pointer-events-auto cursor-pointer">Login</button>
+            <button class="font-roboto text-1xl border-2 border-solid border-white rounded-2xl px-8 py-2 bg-[rgb(171,177,23 pointer-events-auto cursor-pointer hover:bg-orange-400 text-white hover:text-black">Login</button>
         </div>
-        <div class="hero">
-
+        <div class="hero flex flex-col">
+            <div class="home px-20 grid-cols-2 gap-4 flex h-165 bg-linear-to-b from-[rgb(91,176,229)] to-[rgb(143,150,150)] justify-center items-center">
+                <div class="deskripsi w-3/5 flex flex-col gap-5">
+                    <h1 class="font-roboto-condensed text-6xl italic text-slate-950">Perjalanan Nyaman, Kendaraan Terpercaya</h1>
+                    <p class="text-base font-montserrat tracking-tighter text-slate-800/90 max-w-150">Temukan pilihan mobil terbaik dengan kondisi prima dan pelayanan profesional untuk setiap kebutuhan 
+                        perjalanan Anda. Sewa harian atau mingguan dengan proses tanpa ribet.
+                    </p>
+                    <button class="mt-20 mb-7 font-roboto text-3xl bg-[rgb(131,83,42)] rounded-2xl w-100 text-white h-15 pointer-events-auto cursor-pointer hover:bg-[rgb(99,51,232)] transition-all">Pesan Sekarang</button>
+                </div>
+                <div class="logohero w-2/5 h-100 justify-center items-center flex rounded-xl shadow-lg backdrop-sepia-50 bg-linear-to-b from-[rgb(91,176,229)] to-[rgb(143,150,150)] border border-white/20">
+                    <img src="../assets/gambar/download__16_-removebg-preview.png" class="h-auto w-auto" alt="">
+                </div>
+            </div>
+            <div class="cars h-70 bg-[rgb(143,150,150)]">
+                
+            </div>
         </div>
         <div class="footer">
 
