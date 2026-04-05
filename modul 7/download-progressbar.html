@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Download Dialog dengan Progressbar</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background: #f0f4f8; }
+        .wrap { text-align: center; }
+        h1 { color: #2563eb; margin-bottom: 20px; }
+        #tombolDownload {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+        #tombolDownload:hover { background: #1d4ed8; }
+        #progress-label {
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 8px;
+            color: #333;
+        }
+        .ui-progressbar { height: 24px; border-radius: 6px; }
+        .ui-progressbar-value { background: #2563eb; border-radius: 6px; }
+    </style>
+</head>
+<body>
+
+    <div class="wrap">
+        <h1>Download Dialog dengan Progressbar</h1>
+        <button id="tombolDownload">Mulai Download</button>
+    </div>
+
+    <!-- Dialog Download -->
+    <div id="downloadDialog" title="Sedang Mengunduh...">
+        <div id="progress-label">0%</div>
+        <div id="progressbar"></div>
+        <p id="status-text" style="margin-top:12px; color:#555; font-size:0.9rem;">Menyiapkan file...</p>
+    </div>
+
+    <script>
+        var progressbar = $("#progressbar");
+        var progressLabel = $("#progress-label");
+        var nilai = 0;
+        var interval;
+
+        // Inisialisasi progressbar
+        progressbar.progressbar({ value: 0 });
+
+        // Inisialisasi dialog
+        $("#downloadDialog").dialog({
+            autoOpen: false,
+            modal: true,
+            closeOnEscape: false,
+            open: function(event, ui) {
+                // Sembunyikan tombol close
+                $(".ui-dialog-titlebar-close").hide();
+            },
+            buttons: {
+                "Batalkan": function() {
+                    clearInterval(interval);
+                    resetProgress();
+                    $(this).dialog("close");
+                }
+            }
+        });
+
+        // Mulai download saat tombol diklik
+        $("#tombolDownload").click(function() {
+            resetProgress();
+            $("#downloadDialog").dialog("open");
+            mulaiDownload();
+        });
+
+        function mulaiDownload() {
+            nilai = 0;
+            interval = setInterval(function() {
+                nilai += Math.floor(Math.random() * 8) + 3; // naik 3–10% tiap tick
+                if (nilai >= 100) {
+                    nilai = 100;
+                    clearInterval(interval);
+                    progressLabel.text("100% — Selesai!");
+                    $("#status-text").text("Download berhasil! File siap digunakan.");
+                    // Ganti tombol menjadi Tutup
+                    $("#downloadDialog").dialog("option", "buttons", {
+                        "Tutup": function() { $(this).dialog("close"); }
+                    });
+                } else {
+                    progressLabel.text(nilai + "%");
+                    $("#status-text").text("Mengunduh... " + nilai + "%");
+                }
+                progressbar.progressbar("value", nilai);
+            }, 300);
+        }
+
+        function resetProgress() {
+            clearInterval(interval);
+            nilai = 0;
+            progressbar.progressbar("value", 0);
+            progressLabel.text("0%");
+            $("#status-text").text("Menyiapkan file...");
+            $("#downloadDialog").dialog("option", "buttons", {
+                "Batalkan": function() {
+                    clearInterval(interval);
+                    resetProgress();
+                    $(this).dialog("close");
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>

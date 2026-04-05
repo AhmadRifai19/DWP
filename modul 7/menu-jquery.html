@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu dengan jQuery</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; background: #f0f4f8; }
+
+        nav { background: #2563eb; }
+        nav ul { list-style: none; display: flex; }
+        nav ul li { position: relative; }
+        nav ul li a {
+            display: block;
+            padding: 16px 24px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+        nav ul li a:hover { background: #1d4ed8; }
+
+        nav ul li ul {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #1e40af;
+            min-width: 180px;
+            z-index: 100;
+        }
+        nav ul li ul li a { font-weight: normal; padding: 12px 20px; }
+        nav ul li ul li a:hover { background: #1d4ed8; }
+
+        .konten { padding: 40px; }
+        .konten h1 { color: #2563eb; margin-bottom: 10px; }
+        .konten p { color: #555; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <ul id="menu">
+            <li><a href="#">Home</a></li>
+            <li>
+                <a href="#">Layanan ▾</a>
+                <ul>
+                    <li><a href="#">Sewa Harian</a></li>
+                    <li><a href="#">Sewa Mingguan</a></li>
+                    <li><a href="#">Sewa Bulanan</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Armada ▾</a>
+                <ul>
+                    <li><a href="#">SUV</a></li>
+                    <li><a href="#">MPV</a></li>
+                    <li><a href="#">Sedan</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Tentang Kami</a></li>
+            <li><a href="#">Kontak</a></li>
+        </ul>
+    </nav>
+
+    <div class="konten">
+        <h1>Menu dengan jQuery</h1>
+        <p>Arahkan kursor ke menu <strong>Layanan</strong> atau <strong>Armada</strong> untuk melihat submenu.</p>
+    </div>
+
+    <script>
+        $("#menu li").hover(
+            function() {
+                $(this).children("ul").slideDown(200);
+            },
+            function() {
+                $(this).children("ul").slideUp(200);
+            }
+        );
+    </script>
+
+</body>
+</html>
