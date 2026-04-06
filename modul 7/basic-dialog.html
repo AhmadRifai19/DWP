@@ -29,14 +29,12 @@
         <button id="bukaDiaolog">Buka Dialog</button>
     </div>
 
-    <!-- Konten Dialog -->
     <div id="dialog" title="Informasi">
         <p>Ini adalah contoh <strong>Basic Dialog</strong> menggunakan jQuery UI.</p>
         <p>Dialog ini bisa ditutup dengan tombol OK atau tanda ✕.</p>
     </div>
 
     <script>
-        // Inisialisasi dialog (tersembunyi dulu)
         $("#dialog").dialog({
             autoOpen: false,
             modal: true,
@@ -47,7 +45,6 @@
             }
         });
 
-        // Buka dialog saat tombol diklik
         $("#bukaDiaolog").click(function() {
             $("#dialog").dialog("open");
         });

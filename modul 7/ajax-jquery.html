@@ -32,10 +32,9 @@
         <p>Cara menyertakan jQuery:</p>
         <pre>&lt;script src="https://code.jquery.com/jquery-3.7.1.min.js"&gt;&lt;/script&gt;</pre>
         <p>Cara menggunakan jQuery:</p>
-        <pre>// Vanilla JavaScript
+        <pre>
 document.getElementById("judul").style.color = "red";
 
-// jQuery (lebih singkat)
 $("#judul").css("color", "red");</pre>
     </div>
 
@@ -47,7 +46,6 @@ $("#judul").css("color", "red");</pre>
     </div>
 
     <script>
-        // Contoh jQuery sederhana: klik tombol → tampilkan pesan
         $("#tombol").click(function() {
             $("#hasil").text("Halo! Ini adalah contoh jQuery bekerja.");
             $(this).css("background", "#16a34a");

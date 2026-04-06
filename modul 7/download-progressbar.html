@@ -37,7 +37,6 @@
         <button id="tombolDownload">Mulai Download</button>
     </div>
 
-    <!-- Dialog Download -->
     <div id="downloadDialog" title="Sedang Mengunduh...">
         <div id="progress-label">0%</div>
         <div id="progressbar"></div>
@@ -50,16 +49,13 @@
         var nilai = 0;
         var interval;
 
-        // Inisialisasi progressbar
         progressbar.progressbar({ value: 0 });
 
-        // Inisialisasi dialog
         $("#downloadDialog").dialog({
             autoOpen: false,
             modal: true,
             closeOnEscape: false,
             open: function(event, ui) {
-                // Sembunyikan tombol close
                 $(".ui-dialog-titlebar-close").hide();
             },
             buttons: {
@@ -71,7 +67,6 @@
             }
         });
 
-        // Mulai download saat tombol diklik
         $("#tombolDownload").click(function() {
             resetProgress();
             $("#downloadDialog").dialog("open");
@@ -87,7 +82,6 @@
                     clearInterval(interval);
                     progressLabel.text("100% — Selesai!");
                     $("#status-text").text("Download berhasil! File siap digunakan.");
-                    // Ganti tombol menjadi Tutup
                     $("#downloadDialog").dialog("option", "buttons", {
                         "Tutup": function() { $(this).dialog("close"); }
                     });
