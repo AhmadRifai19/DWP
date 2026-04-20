@@ -35,5 +35,10 @@ $status = (empty($user)) ? "Kosong" : "Ada isi";
 echo $status."<br>";
 // variable $color diisi dengan "red" jika $color tidak ada atau null
 echo $color = $color ?? "red";
+echo "<br><br>";
+echo "<b>Jawaban Pertanyaan:</b><br>";
+echo "Apa perbedaan \$x++ dan ++\$x ??<br>";
+echo "1. <b>\$x++ (Post-increment)</b>: Akan mengembalikan nilai \$x terlebih dahulu, baru kemudian nilainya ditambah 1.<br>";
+echo "2. <b>++\$x (Pre-increment)</b>: Akan menambahkan nilai \$x dengan 1 terlebih dahulu, baru kemudian mengembalikan nilai yang baru.<br>";
 
 ?>
