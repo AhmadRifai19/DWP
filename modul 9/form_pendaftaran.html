@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Pendaftaran</title>
+</head>
+<body>
+    <form action="proses_pendaftaran.php" method="POST">
+        <table>
+            <tr>
+                <td>Nim</td>
+                <td>:</td>
+                <td><input type="text" name="nim" id="nim" placeholder="nim"></td>
+            </tr>
+            <tr>
+                <td>Nama Lengkap</td>
+                <td>:</td>
+                <td><input type="text" name="nama" id="nama" placeholder="nama"></td>
+            </tr>
+            <tr>
+                <td>E-mail</td>
+                <td>:</td>
+                <td><input type="email" name="email" id="email" placeholder="email"></td>
+            </tr>
+            <tr>
+                <td>Tempat, Tanggal Lahir</td>
+                <td>:</td>
+                <td>
+                    <input type="text" name="tempat" id="tempat" placeholder="tempat">
+                    <input type="date" name="ttl" id="ttl">
+                </td>
+            </tr>
+            <tr>
+                <td>Alamat</td>
+                <td>:</td>
+                <td><textarea name="alamat" id="alamat" placeholder="Alamat" rows="3" cols="30"></textarea></td>
+            </tr>
+            <tr>
+                <td>Gender</td>
+                <td>:</td>
+                <td>
+                    <input type="radio" name="gender" id="laki" value="Laki-Laki">
+                    <label for="laki">Laki-Laki</label>
+                    <input type="radio" name="gender" id="perempuan" value="Perempuan" checked>
+                    <label for="perempuan">Perempuan</label>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <input type="submit" name="kirim" value="kirim">
+                </td>
+            </tr>
+        </table>
+    </form>
+
+    <p>Informasi yang dikirim dari formulir dengan metode GET dapat dilihat oleh semua orang. Metode GET juga memiliki batasan jumlah informasi yang dapat dikirim. Batasannya sekitar 2000 karakter. Namun, karena variabel ditampilkan di URL, halaman tersebut dapat di-bookmark. Ini bisa berguna dalam beberapa kasus. GET dapat digunakan untuk mengirim data yang tidak sensitif. Sementara itu, metode POST tidak menampilkan variabel di URL dan tidak memiliki batasan jumlah informasi yang dapat dikirim. Metode POST lebih aman daripada metode GET karena informasi tidak terlihat di URL.</p>
+    <p>Informasi yang dikirim dari formulir dengan metode POST tidak terlihat oleh pihak lain dan tidak ada batasan jumlah informasi yang dapat dikirim. POST juga mendukung fungsionalitas tingkat lanjut seperti dukungan untuk input biner multi-bagian saat mengunggah file ke server.</p>
+
+</body>
+</html>
