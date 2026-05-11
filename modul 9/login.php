@@ -14,7 +14,7 @@
 $name = $email = "";
 $nameErr = $emailErr = "";
 
-function bersihkan_input($data) {
+function bersihkan_input(string $data): string {
     $data = trim($data);
     $data = stripslashes($data);
     $data = htmlspecialchars($data);
