@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo("<hr>");
 }
 
-function bersihkan_input($data) {
+function bersihkan_input(string $data): string {
     $data = trim($data);
     $data = stripslashes($data);
     $data = htmlspecialchars($data);
