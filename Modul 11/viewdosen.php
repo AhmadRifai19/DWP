@@ -1,99 +1,107 @@
 <?php
-  include 'koneksi.php';
+/** @var mysqli $link */ // @ts-ignore
+include 'koneksi.php';
 ?>
 
 <!DOCTYPE html>
-<html>
-  <head>
-    <style>
-      table{
-        width: 840px;
-        margin: auto;
-      }
-      h1{
-        text-align: center;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>Tabel Dosen</h1>
-    <center><a href="input.php">Input Data</a></center>
-    <br/>
-    
-    <div style="width: 840px; margin: 0 auto 15px auto; text-align: right;">
-        <form method="GET" action="viewdosen.php">
-            <input type="text" name="kata_kunci" placeholder="Cari nama dosen..." 
-                   value="<?php if(isset($_GET['kata_kunci'])) { echo htmlspecialchars($_GET['kata_kunci']); } ?>" 
-                   style="padding: 5px; width: 200px;">
-            <button type="submit" style="padding: 5px 10px;">Cari</button>
-            
-            <?php if(isset($_GET['kata_kunci']) && $_GET['kata_kunci'] != '') { ?>
-                <a href="viewdosen.php" style="padding: 6px 10px; background-color: #ef4444; color: white; text-decoration: none; font-size: 13px;">Reset</a>
-            <?php } ?>
-        </form>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Data Dosen</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="brand">SIA <span>| Sistem Informasi Akademik</span></div>
+        <ul class="nav-links">
+            <li><a href="index.php">🏠 Dashboard</a></li>
+            <li><a href="viewdosen.php" class="active">👨‍🏫 Dosen</a></li>
+            <li><a href="view_mahasiswa.php">🎓 Mahasiswa</a></li>
+            <li><a href="view_matakuliah.php">📚 Mata Kuliah</a></li>
+        </ul>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="page-header fade-in">
+        <h1>Daftar Dosen</h1>
+        <p>Manajemen data dosen pada Sistem Informasi Akademik</p>
     </div>
-    
-    <table border="1">
-      <tr>
-        <th>ID</th>
-        <th>Nama Dosen</th>
-        <th>No HP</th>
-        <th>Pilihan</th>
-      </tr>
-      <?php
-      
-      // LOGIKA PENCARIAN MENGGUNAKAN PREPARED STATEMENTS (OOP)
-      if (isset($_GET['kata_kunci']) && $_GET['kata_kunci'] != '') {
-          $keyword = $_GET['kata_kunci'];
-          // Menyiapkan string pencarian dengan % di awal dan akhir
-          $searchTerm = "%" . $keyword . "%";
-          
-          // 1. PREPARE
-          $stmt = $con->prepare("SELECT * FROM t_dosen WHERE namaDosen LIKE ? ORDER BY idDosen ASC");
-          // 2. BIND (s = string)
-          $stmt->bind_param("s", $searchTerm);
-      } else {
-          // Jika tidak ada pencarian, tampilkan semua
-          $stmt = $con->prepare("SELECT * FROM t_dosen ORDER BY idDosen ASC");
-      }
-      
-      // 3. EXECUTE
-      $stmt->execute();
-      
-      // 4. GET RESULT
-      $result = $stmt->get_result();
 
-      // Mengecek apakah ada error ketika menjalankan query menggunakan format OOP
-      if(!$result){
-        die ("Query Error: " . $con->errno . " - " . $con->error);
-      }
+    <!-- Main Content Card -->
+    <div class="card fade-in">
+        <div class="actions-bar">
+            <!-- Search Bar -->
+            <form method="GET" action="viewdosen.php" class="search-bar">
+                <input type="text" name="kata_kunci" placeholder="Cari nama dosen..." 
+                       value="<?php if(isset($_GET['kata_kunci'])) { echo htmlspecialchars($_GET['kata_kunci']); } ?>">
+                <button type="submit">Cari</button>
+                
+                <?php if(isset($_GET['kata_kunci']) && $_GET['kata_kunci'] != '') { ?>
+                    <a href="viewdosen.php" class="btn btn-danger btn-sm" style="display: flex; align-items: center; justify-content: center; height: 100%; text-decoration: none;">Reset</a>
+                <?php } ?>
+            </form>
 
-      // 5. Menampilkan hasil dengan perulangan
-      // Cek apakah datanya ada
-      if ($result->num_rows > 0) {
-          while ($data = $result->fetch_assoc())
-          {
-            echo "<tr>";
-            echo "<td>" . $data['idDosen'] . "</td>";
-            
-            // htmlspecialchars digunakan untuk memfilter data agar bebas dari injeksi script HTML
-            echo "<td>" . htmlspecialchars($data['namaDosen']) . "</td>";
-            echo "<td>" . htmlspecialchars($data['noHP']) . "</td>";
-            
-            echo '<td>
-              <a href="editdosen.php?idDosen='.$data['idDosen'].'">Edit</a> /
-              <a href="hapusdosen.php?idDosen='.$data['idDosen'].'"
-                onclick="return confirm(\'Anda yakin akan menghapus data?\')">Hapus</a>
-              </td>';
-            echo "</tr>";
-          }
-      } else {
-          echo "<tr><td colspan='4' style='text-align:center;'>Data tidak ditemukan.</td></tr>";
-      }
-      
-      // 6. Menutup statement
-      $stmt->close();
-      ?>
-    </table>
-  </body>
+            <!-- Add Button -->
+            <a href="input.php" class="btn btn-success">+ Tambah Dosen</a>
+        </div>
+
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nama Dosen</th>
+                    <th>No HP</th>
+                    <th style="width: 160px; text-align: center;">Pilihan</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                // LOGIKA PENCARIAN (Prosedural Modul 11)
+                if (isset($_GET['kata_kunci']) && $_GET['kata_kunci'] != '') {
+                    $keyword = $_GET['kata_kunci'];
+                    $query = "SELECT * FROM t_dosen WHERE namaDosen LIKE '%$keyword%' ORDER BY idDosen ASC";
+                } else {
+                    $query = "SELECT * FROM t_dosen ORDER BY idDosen ASC";
+                }
+                
+                $result = mysqli_query($link, $query);
+
+                if(!$result){
+                    die ("Query Error: ".mysqli_errno($link)." - ".mysqli_error($link));
+                }
+
+                // Menampilkan hasil dengan perulangan
+                if (mysqli_num_rows($result) > 0) {
+                    while ($data = mysqli_fetch_assoc($result)) {
+                        echo "<tr>";
+                        echo "<td>" . $data['idDosen'] . "</td>";
+                        
+                        // htmlspecialchars untuk memfilter output
+                        echo "<td>" . htmlspecialchars($data['namaDosen']) . "</td>";
+                        echo "<td>" . htmlspecialchars($data['noHP']) . "</td>";
+                        
+                        echo '<td style="text-align: center;">
+                                <div class="action-links" style="justify-content: center;">
+                                    <a href="editdosen.php?idDosen='.$data['idDosen'].'" class="btn btn-warning btn-sm">Edit</a>
+                                    <a href="hapusdosen.php?idDosen='.$data['idDosen'].'" class="btn btn-danger btn-sm"
+                                       onclick="return confirm(\'Anda yakin akan menghapus data?\')">Hapus</a>
+                                </div>
+                              </td>';
+                        echo "</tr>";
+                    }
+                } else {
+                    echo "<tr><td colspan='4' class='empty-state' style='text-align:center;'>Data tidak ditemukan.</td></tr>";
+                }
+                ?>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        &copy; <?php echo date('Y'); ?> Sistem Informasi Akademik — Modul 11 PHP Database (CRUD)
+    </div>
+</body>
 </html>

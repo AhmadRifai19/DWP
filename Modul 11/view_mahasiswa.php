@@ -1,8 +1,6 @@
 <?php
-
 /** @var mysqli $link */ // @ts-ignore
-
-  include 'koneksi.php'; // memanggil file koneksi.php
+include 'koneksi.php'; // memanggil file koneksi.php
 ?>
 
 <!DOCTYPE html>
@@ -11,135 +9,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daftar Data Mahasiswa</title>
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-        body {
-            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f3f4f6; /* Latar belakang abu terang */
-            color: #333;
-            padding: 40px 20px;
-        }
-        .container {
-            max-width: 1000px;
-            margin: auto;
-            background: #ffffff;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-        }
-        h1 {
-            text-align: center;
-            font-size: 26px;
-            font-weight: 600;
-            color: #1f2937;
-            margin-bottom: 20px;
-        }
-        .header-actions {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-        
-        .search-form { display: flex; gap: 8px; }
-        .search-input { padding: 9px 12px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 14px; width: 250px; outline: none; transition: border-color 0.2s; }
-        .search-input:focus { border-color: #3b82f6; }
-        .btn-search { padding: 9px 15px; background-color: #4b5563; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; transition: background 0.2s; }
-        .btn-search:hover { background-color: #374151; }
-        .btn-reset { padding: 9px 15px; background-color: #ef4444; color: white; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 13.5px; transition: background 0.2s; display: flex; align-items: center;}
-        .btn-reset:hover { background-color: #dc2626; }
-
-        .btn-add {
-            padding: 10px 20px;
-            background-color: #2563eb; /* Biru modern */
-            color: white;
-            text-decoration: none;
-            border-radius: 6px;
-            font-size: 14px;
-            font-weight: 600;
-            transition: background-color 0.2s;
-        }
-        .btn-add:hover {
-            background-color: #1d4ed8;
-        }
-        
-        .table-responsive {
-            overflow-x: auto;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            text-align: left;
-            font-size: 14px;
-        }
-        th {
-            background-color: #f9fafb;
-            color: #4b5563;
-            font-weight: 600;
-            padding: 14px 16px;
-            border-bottom: 2px solid #e5e7eb;
-        }
-        td {
-            padding: 14px 16px;
-            border-bottom: 1px solid #edf2f7;
-            color: #4a5568;
-        }
-        tr:hover {
-            background-color: #f8fafc;
-        }
-        .btn-action {
-            display: inline-block;
-            padding: 6px 12px;
-            font-size: 12px;
-            font-weight: 500;
-            text-decoration: none;
-            border-radius: 4px;
-            transition: all 0.2s;
-        }
-        .btn-edit {
-            background-color: #fef3c7;
-            color: #d97706;
-        }
-        .btn-edit:hover {
-            background-color: #fde68a;
-        }
-        .btn-delete {
-            background-color: #fee2e2;
-            color: #dc2626;
-            margin-left: 5px;
-        }
-        .btn-delete:hover {
-            background-color: #fca5a5;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="brand">SIA <span>| Sistem Informasi Akademik</span></div>
+        <ul class="nav-links">
+            <li><a href="index.php">🏠 Dashboard</a></li>
+            <li><a href="viewdosen.php">👨‍🏫 Dosen</a></li>
+            <li><a href="view_mahasiswa.php" class="active">🎓 Mahasiswa</a></li>
+            <li><a href="view_matakuliah.php">📚 Mata Kuliah</a></li>
+        </ul>
+    </nav>
 
-    <div class="container">
+    <!-- Page Header -->
+    <div class="page-header fade-in">
         <h1>Daftar Mahasiswa</h1>
-        
-        <div class="header-actions">
-            <form method="GET" action="view_mahasiswa.php" class="search-form">
-                <input type="text" name="kata_kunci" class="search-input" placeholder="Cari nama mahasiswa..." 
-                       value="<?php if(isset($_GET['kata_kunci'])) { echo $_GET['kata_kunci']; } ?>">
-                <button type="submit" class="btn-search">Cari</button>
+        <p>Manajemen data mahasiswa pada Sistem Informasi Akademik</p>
+    </div>
+
+    <!-- Main Content Card -->
+    <div class="card fade-in">
+        <div class="actions-bar">
+            <!-- Search Bar -->
+            <form method="GET" action="view_mahasiswa.php" class="search-bar">
+                <input type="text" name="kata_kunci" placeholder="Cari nama mahasiswa..." 
+                       value="<?php if(isset($_GET['kata_kunci'])) { echo htmlspecialchars($_GET['kata_kunci']); } ?>">
+                <button type="submit">Cari</button>
                 
                 <?php if(isset($_GET['kata_kunci']) && $_GET['kata_kunci'] != '') { ?>
-                    <a href="view_mahasiswa.php" class="btn-reset">Reset</a>
+                    <a href="view_mahasiswa.php" class="btn btn-danger btn-sm" style="display: flex; align-items: center; justify-content: center; height: 100%; text-decoration: none;">Reset</a>
                 <?php } ?>
             </form>
 
-            <a href="input_mahasiswa.php" class="btn-add">+ Tambah Mahasiswa</a>
+            <!-- Add Button -->
+            <a href="input_mahasiswa.php" class="btn btn-success">+ Tambah Mahasiswa</a>
         </div>
 
         <div class="table-responsive">
-            <table>
+            <table class="data-table">
                 <thead>
                     <tr>
                         <th>NPM</th>
@@ -147,12 +56,12 @@
                         <th>Prodi</th>
                         <th>Alamat</th>
                         <th>No HP</th>
-                        <th style="text-align: center;">Aksi</th>
+                        <th style="width: 160px; text-align: center;">Pilihan</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
-                    // LOGIKA PENCARIAN
+                    // LOGIKA PENCARIAN (Prosedural Modul 11)
                     if (isset($_GET['kata_kunci']) && $_GET['kata_kunci'] != '') {
                         $keyword = $_GET['kata_kunci'];
                         $query = "SELECT * FROM t_mahasiswa WHERE namaMhs LIKE '%$keyword%' ORDER BY npm ASC";
@@ -170,20 +79,22 @@
                     if(mysqli_num_rows($result) > 0) {
                         while ($data = mysqli_fetch_assoc($result)) {
                             echo "<tr>";
-                            echo "<td><strong>$data[npm]</strong></td>";
-                            echo "<td>$data[namaMhs]</td>";
-                            echo "<td>$data[prodi]</td>";
-                            echo "<td>$data[alamat]</td>";
-                            echo "<td>$data[noHP]</td>";
+                            echo "<td><strong>" . htmlspecialchars($data['npm']) . "</strong></td>";
+                            echo "<td>" . htmlspecialchars($data['namaMhs']) . "</td>";
+                            echo "<td>" . htmlspecialchars($data['prodi']) . "</td>";
+                            echo "<td>" . htmlspecialchars($data['alamat']) . "</td>";
+                            echo "<td>" . htmlspecialchars($data['noHP']) . "</td>";
                             echo '<td style="text-align: center;">
-                                    <a href="editmahasiswa.php?npm='.$data['npm'].'" class="btn-action btn-edit">Edit</a>
-                                    <a href="hapusmahasiswa.php?npm='.$data['npm'].'" class="btn-action btn-delete" 
-                                       onclick="return confirm(\'Apakah Anda yakin ingin menghapus data mahasiswa ini?\')">Hapus</a>
+                                    <div class="action-links" style="justify-content: center;">
+                                        <a href="editmahasiswa.php?npm='.$data['npm'].'" class="btn btn-warning btn-sm">Edit</a>
+                                        <a href="hapusmahasiswa.php?npm='.$data['npm'].'" class="btn btn-danger btn-sm" 
+                                           onclick="return confirm(\'Apakah Anda yakin ingin menghapus data mahasiswa ini?\')">Hapus</a>
+                                    </div>
                                   </td>';
                             echo "</tr>";
                         }
                     } else {
-                        echo "<tr><td colspan='6' style='text-align:center; padding: 20px;'>Data mahasiswa tidak ditemukan.</td></tr>";
+                        echo "<tr><td colspan='6' class='empty-state' style='text-align:center;'>Data mahasiswa tidak ditemukan.</td></tr>";
                     }
                     ?>
                 </tbody>
@@ -191,5 +102,9 @@
         </div>
     </div>
 
+    <!-- Footer -->
+    <div class="footer">
+        &copy; <?php echo date('Y'); ?> Sistem Informasi Akademik — Modul 11 PHP Database (CRUD)
+    </div>
 </body>
 </html>

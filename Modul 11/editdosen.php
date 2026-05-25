@@ -1,12 +1,9 @@
 <?php
-
 /** @var mysqli $link */ // @ts-ignore
+include 'koneksi.php';
 
-  // memanggil file koneksi.php untuk membuat koneksi
-  include 'koneksi.php';
-
-  // mengecek apakah di url ada nilai GET idDosen
-  if (isset($_GET['idDosen'])) {
+// mengecek apakah di url ada nilai GET idDosen
+if (isset($_GET['idDosen'])) {
     // ambil nilai idDosen dari url dan disimpan dalam variabel $id
     $id = ($_GET["idDosen"]);
 
@@ -19,54 +16,73 @@
          " - ".mysqli_error($link));
     }
     // mengambil data dari database dan membuat variabel-variabel utk menampung data
-    // variabel ini nantinya akan ditampilkan pada form
     $data = mysqli_fetch_assoc($result);
     $idDosen = $data["idDosen"];
     $namaDosen = $data["namaDosen"];
     $noHP = $data["noHP"];
-  } else {
-    // apabila tidak ada data GET id pada akan di redirect ke index.php
+} else {
+    // apabila tidak ada data GET id pada akan di redirect ke viewdosen.php
     header("location:viewdosen.php");
-  }
+    exit;
+}
 ?>
 <!DOCTYPE html>
-<html>
-  <head>
-    <style>
-      h1{
-        text-align: center;
-      }
-      .container{
-        width: 400px;
-        margin: auto;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>Edit Data</h1>
-    <div class="container">
-      <form id="form_dosen" action="proses_editdosen.php" method="post">
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Data Dosen</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="brand">SIA <span>| Sistem Informasi Akademik</span></div>
+        <ul class="nav-links">
+            <li><a href="index.php">🏠 Dashboard</a></li>
+            <li><a href="viewdosen.php" class="active">👨‍🏫 Dosen</a></li>
+            <li><a href="view_mahasiswa.php">🎓 Mahasiswa</a></li>
+            <li><a href="view_matakuliah.php">📚 Mata Kuliah</a></li>
+        </ul>
+    </nav>
 
-        <fieldset>
-        <legend>Edit Data Dosen</legend>
-          <p>
-            <label for="idDosen">ID : </label>
-            <input type="hidden" name="idDosen" value="<?php echo $idDosen; ?>">
-            <input type="text" name="idDosenDisabled" id="idDosenDisabled" value="<?php echo $idDosen ?>" disabled >
-          </p>
-          <p>
-            <label for="namaDosen">Nama Dosen : </label>
-            <input type="text" name="namaDosen" id="namaDosen" value="<?php echo $namaDosen ?>">
-          </p>
-          <p>
-            <label for="noHP">No HP : </label>
-            <input type="text" name="noHP" id="noHP" value="<?php echo $noHP ?>">
-          </p>
-        </fieldset>
-        <p>
-          <input type="submit" name="edit" value="Update Data">
-        </p>
-      </form>
+    <!-- Page Header -->
+    <div class="page-header fade-in">
+        <h1>Edit Dosen</h1>
+        <p>Perbarui informasi dosen pada Sistem Informasi Akademik</p>
     </div>
-  </body>
+
+    <!-- Main Content Card -->
+    <div class="card form-card fade-in">
+        <div class="form-title">Form Edit Dosen</div>
+        <form id="form_dosen" action="proses_editdosen.php" method="post">
+            
+            <div class="form-group">
+                <label for="idDosen">ID</label>
+                <input type="hidden" name="idDosen" value="<?php echo htmlspecialchars($idDosen); ?>">
+                <input type="text" name="idDosenDisabled" id="idDosenDisabled" value="<?php echo htmlspecialchars($idDosen); ?>" disabled>
+            </div>
+            
+            <div class="form-group">
+                <label for="namaDosen">Nama Dosen</label>
+                <input type="text" name="namaDosen" id="namaDosen" value="<?php echo htmlspecialchars($namaDosen); ?>" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="noHP">Nomor HP</label>
+                <input type="text" name="noHP" id="noHP" value="<?php echo htmlspecialchars($noHP); ?>" required>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" name="edit" class="btn btn-primary" style="flex: 1; justify-content: center;">Update Data</button>
+                <a href="viewdosen.php" class="btn btn-danger" style="flex: 1; justify-content: center; text-decoration: none;">Batal</a>
+            </div>
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        &copy; <?php echo date('Y'); ?> Sistem Informasi Akademik — Modul 11 PHP Database (CRUD)
+    </div>
+</body>
 </html>
